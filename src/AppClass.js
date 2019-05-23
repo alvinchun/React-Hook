@@ -19,9 +19,21 @@ class App extends Component {
 
   render() {
     return (
-      <button onClick={this.incrementCount}>
-        I was clicked {this.state.count} times
-      </button>
+      <>
+        <h2>Counter </h2>
+        <button onClick={this.incrementCount}>
+          I was clicked {this.state.count} times
+        </button>
+
+        <h2>Toggle Light</h2>
+        <div
+          style={{
+            height: "50px",
+            width: "50px",
+            background: "grey"
+          }}
+        />
+      </>
     );
   }
 }

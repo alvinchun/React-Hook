@@ -5,7 +5,7 @@ const App = () => {
 
   // Based on the Previous Value, it increases correctly
   const incrementCount = () => {
-    setCount(preCount => preCount + 2);
+    setCount(preCount => preCount + 1);
   };
 
   //   const incrementCount = () => {
