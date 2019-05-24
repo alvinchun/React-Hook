@@ -2,7 +2,8 @@ import React, { Component } from "react";
 
 class App extends Component {
   state = {
-    count: 0
+    count: 0,
+    isOn: false
   };
 
   incrementCount = () => {
@@ -17,6 +18,12 @@ class App extends Component {
     }));
   };
 
+  toggleLight = () => {
+    this.setState(prevState => ({
+      isOn: !prevState.isOn
+    }));
+  };
+
   render() {
     return (
       <>
@@ -27,10 +34,11 @@ class App extends Component {
 
         <h2>Toggle Light</h2>
         <div
+          onClick={this.toggleLight}
           style={{
             height: "50px",
             width: "50px",
-            background: "grey"
+            background: this.state.isOn ? "yellow" : "grey"
           }}
         />
       </>
