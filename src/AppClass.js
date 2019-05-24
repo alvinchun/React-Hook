@@ -3,9 +3,27 @@ import React, { Component } from "react";
 class App extends Component {
   state = {
     count: 0,
-    isOn: false
+    isOn: false,
+    x: null,
+    y: null
   };
 
+  // update the state after the initial render
+  componentDidMount() {
+    document.title = `You have been clicked ${this.state.count} times`;
+    window.addEventListener("mousemove", this.handleMouseMove);
+  }
+
+  // whenever the count value is updated
+  componentDidUpdate() {
+    document.title = `You have been clicked ${this.state.count} times`;
+  }
+  handleMouseMove = event => {
+    this.setState({
+      x: event.pageX,
+      y: event.pageY
+    });
+  };
   incrementCount = () => {
     this.setState({
       count: this.state.count + 1
@@ -41,6 +59,10 @@ class App extends Component {
             background: this.state.isOn ? "yellow" : "grey"
           }}
         />
+
+        <h2>Mouse Position</h2>
+        <p>X position: {this.state.x}</p>
+        <p>Y position: {this.state.y}</p>
       </>
     );
   }
