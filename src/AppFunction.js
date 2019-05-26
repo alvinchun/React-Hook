@@ -5,11 +5,29 @@ import React, { useState, useEffect } from "react";
 const App = () => {
   const [count, setCount] = useState(0);
   const [isOn, setIsOn] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: null, y: null });
 
   //By default after each render how this want to be
   useEffect(() => {
     document.title = `You have clicked ${count} times`;
+    window.addEventListener("mousemove", handleMouseMove);
+
+    // Creating new function to return after the previous side effect. That's why we use return() function to initiate after the previous function gets done.
+    // We tell useEffect what we want to be done prior to our component being unmounted
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+    // If we want to run the sideeffect(useEffect) less frequently, we can provide a second arguement which is in array of values
+    // If we give nothing inside of the array, the state {count} value no longer works.
+    // so we give in the exception of saying [count] to make the exception to {count} be working
   });
+
+  const handleMouseMove = event => {
+    setMousePosition({
+      x: event.pageX,
+      y: event.pageY
+    });
+  };
 
   // Based on the Previous Value, it increases correctly
   const incrementCount = () => {
@@ -42,6 +60,9 @@ const App = () => {
         }}
         alt="Flashlight"
       />
+      <h2>Mouse Position</h2>
+      {JSON.stringify(mousePosition, null, 2)}
+      <br />
     </>
   );
 };
