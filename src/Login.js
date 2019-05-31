@@ -9,11 +9,14 @@ export default function Login() {
     // preventing from reloading the page when the form is submitted
     // We normally use this in the client side validation before we make network request
     event.preventDefault();
+
     const userData = {
       username,
       password
     };
+
     setUser(userData);
+
     setUsername("");
     setPassword("");
   };
@@ -31,14 +34,14 @@ export default function Login() {
       >
         <input
           type="text"
-          name="username"
+          //   name="username"
           placeholder="Username"
           onChange={event => setUsername(event.target.value)}
           value={username}
         />
         <input
           type="password"
-          name="password"
+          name="option"
           placeholder="Password"
           onChange={event => setPassword(event.target.value)}
           value={password}
