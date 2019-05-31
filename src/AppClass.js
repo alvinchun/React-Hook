@@ -29,11 +29,12 @@ class App extends Component {
       y: event.pageY
     });
   };
-  incrementCount = () => {
-    this.setState({
-      count: this.state.count + 1
-    });
-  };
+
+  // incrementCount = () => {
+  //   this.setState({
+  //     count: this.state.count + 1
+  //   });
+  // };
 
   incrementCount = () => {
     this.setState(prevState => ({
